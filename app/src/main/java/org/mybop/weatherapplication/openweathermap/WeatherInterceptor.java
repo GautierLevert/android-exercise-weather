@@ -1,4 +1,4 @@
-package org.mybop.weatherapplication;
+package org.mybop.weatherapplication.openweathermap;
 
 import org.springframework.http.HttpRequest;
 import org.springframework.http.client.ClientHttpRequestExecution;
@@ -9,7 +9,7 @@ import org.springframework.http.client.support.HttpRequestWrapper;
 import java.io.IOException;
 import java.net.URI;
 
-public class OpenWeatherInterceptor implements ClientHttpRequestInterceptor {
+public class WeatherInterceptor implements ClientHttpRequestInterceptor {
 
     private static final String API_KEY = "b9f451a73c130f5c9c91ec7a9e6240ca";
 
@@ -18,7 +18,7 @@ public class OpenWeatherInterceptor implements ClientHttpRequestInterceptor {
         request = new HttpRequestWrapper(request) {
             @Override
             public URI getURI() {
-                return URI.create(super.getURI() + "&APPID=" + API_KEY);
+                return URI.create(super.getURI() + "&units=metric&APPID=" + API_KEY);
             }
         };
         return execution.execute(request, body);

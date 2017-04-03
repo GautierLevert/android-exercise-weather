@@ -69,4 +69,10 @@ dependencies {
     // ReactiveX
     compile 'io.reactivex.rxjava2:rxjava:2.0.8'
     compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
+
+    // Joda Time
+    compile 'joda-time:joda-time:2.9.9'
+
+    // Picasso
+    compile 'com.squareup.picasso:picasso:2.5.2'
 }

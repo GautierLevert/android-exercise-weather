@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Application Météo</string>
+    <string name="weather">Météo</string>
+    <string name="conditions">Conditions</string>
+    <string name="temperature">température</string>
+    <string name="pressure">pression</string>
+    <string name="humidity">humidité</string>
+    <string name="wind">Vent</string>
+    <string name="speed">vitesse</string>
+    <string name="information">Informations</string>
+    <string name="last_update">date</string>
+</resources>

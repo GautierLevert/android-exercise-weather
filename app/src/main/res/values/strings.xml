@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">Weather Application</string>
+    <string name="weather">Weather</string>
+    <string name="conditions">Conditions</string>
+    <string name="temperature">temperature</string>
+    <string name="pressure">pressure</string>
+    <string name="humidity">humidity</string>
+    <string name="wind">Wind</string>
+    <string name="speed">speed</string>
+    <string name="information">Information</string>
+    <string name="last_update">last update</string>
 </resources>

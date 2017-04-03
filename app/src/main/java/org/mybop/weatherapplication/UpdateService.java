@@ -10,6 +10,8 @@ import org.androidannotations.annotations.ServiceAction;
 import org.androidannotations.api.support.app.AbstractIntentService;
 import org.androidannotations.rest.spring.annotations.RestService;
 import org.greenrobot.eventbus.EventBus;
+import org.mybop.weatherapplication.openweathermap.WeatherClient;
+import org.mybop.weatherapplication.openweathermap.WeatherResponse;
 
 import java.util.concurrent.Callable;
 

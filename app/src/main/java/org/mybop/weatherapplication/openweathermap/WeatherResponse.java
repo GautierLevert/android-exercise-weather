@@ -1,6 +1,10 @@
-package org.mybop.weatherapplication;
+package org.mybop.weatherapplication.openweathermap;
+
+import android.net.Uri;
 
 import com.google.gson.annotations.SerializedName;
+
+import org.joda.time.DateTime;
 
 import java.util.List;
 
@@ -69,6 +73,10 @@ public class WeatherResponse {
         this.dt = dt;
     }
 
+    public DateTime getDatetime() {
+        return new DateTime(dt * 1000L);
+    }
+
     @Override
     public String toString() {
         return "WeatherResponse{" +
@@ -77,7 +85,7 @@ public class WeatherResponse {
                 ", base='" + base + '\'' +
                 ", main=" + main +
                 ", wind=" + wind +
-                ", dt=" + dt +
+                ", dt=" + getDatetime() +
                 '}';
     }
 
@@ -158,13 +166,17 @@ public class WeatherResponse {
             this.icon = icon;
         }
 
+        public Uri getIconUri() {
+            return Uri.parse(String.format("http://openweathermap.org/img/w/%s.png", icon));
+        }
+
         @Override
         public String toString() {
             return "Weather{" +
                     "id=" + id +
                     ", main='" + main + '\'' +
                     ", description='" + description + '\'' +
-                    ", icon='" + icon + '\'' +
+                    ", icon='" + getIconUri() + '\'' +
                     '}';
         }
     }
@@ -198,6 +210,10 @@ public class WeatherResponse {
 
         public void setTemp(double temp) {
             this.temp = temp;
+        }
+
+        public double getCelsiusTemp() {
+            return ((temp - 32.0) * 5.0) / 9.0;
         }
 
         public double getPressure() {
@@ -262,7 +278,8 @@ public class WeatherResponse {
         }
     }
 
-    private class Wind {
+    public static class Wind {
+
         private double speed;
 
         private double deg;
