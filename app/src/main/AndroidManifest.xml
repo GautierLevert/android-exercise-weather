@@ -21,9 +21,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <service
             android:name=".UpdateService_"
             android:exported="false" />
+
+        <activity
+            android:name=".SettingsActivity_"
+            android:label="@string/title_activity_settings"
+            android:parentActivityName=".MainActivity_">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.mybop.weatherapplication.MainActivity_" />
+        </activity>
     </application>
 
 </manifest>

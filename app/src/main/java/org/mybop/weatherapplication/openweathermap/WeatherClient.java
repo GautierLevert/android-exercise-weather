@@ -5,7 +5,7 @@ import org.androidannotations.rest.spring.annotations.Path;
 import org.androidannotations.rest.spring.annotations.Rest;
 import org.springframework.http.converter.json.GsonHttpMessageConverter;
 
-@Rest(rootUrl = "http://api.openweathermap.org/data/2.5/", converters = GsonHttpMessageConverter.class, interceptors = WeatherInterceptor.class)
+@Rest(rootUrl = "http://api.openweathermap.org/data/2.5/", converters = GsonHttpMessageConverter.class, interceptors = {WeatherInterceptor.class, MetricInterceptor.class, LanguageInterceptor.class})
 public interface WeatherClient {
 
     @Get("/weather?lat={lat}&lon={lon}")

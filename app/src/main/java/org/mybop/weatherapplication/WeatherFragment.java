@@ -11,10 +11,13 @@ import com.tmtron.greenannotations.EventBusGreenRobot;
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.UiThread;
 import org.androidannotations.annotations.ViewById;
+import org.androidannotations.annotations.sharedpreferences.Pref;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.joda.time.format.DateTimeFormat;
 import org.mybop.weatherapplication.openweathermap.WeatherResponse;
+
+import java.util.Locale;
 
 import io.reactivex.Observable;
 import io.reactivex.annotations.NonNull;
@@ -27,6 +30,9 @@ public class WeatherFragment extends Fragment {
 
     @EventBusGreenRobot
     protected EventBus eventBus;
+
+    @Pref
+    protected Preferences_ preferences;
 
     @ViewById(R.id.icon)
     protected ImageView icon;
@@ -73,11 +79,13 @@ public class WeatherFragment extends Fragment {
                         }
                     });
 
-            temperature.setText(String.format("%.2f °C", response.getMain().getTemp()));
-            pressure.setText(String.format("%.2f hPa", response.getMain().getPressure()));
-            humidity.setText(String.format("%d %%", response.getMain().getHumidity()));
+            UnitSystem unitSystem = UnitSystem.valueOf(preferences.unitSystem().get());
 
-            speed.setText(String.format("%.2f m/s", response.getWind().getSpeed()));
+            temperature.setText(String.format(Locale.getDefault(), "%.2f %s", response.getMain().getTemp(), unitSystem.getTemperatureUnit()));
+            pressure.setText(String.format(Locale.getDefault(), "%.2f hPa", response.getMain().getPressure()));
+            humidity.setText(String.format(Locale.getDefault(), "%d %%", response.getMain().getHumidity()));
+
+            speed.setText(String.format(Locale.getDefault(), "%.2f %s", response.getWind().getSpeed(), unitSystem.getSpeedUnit()));
 
             lastUpdate.setText(DateTimeFormat.shortDateTime().print(response.getDatetime()));
         }

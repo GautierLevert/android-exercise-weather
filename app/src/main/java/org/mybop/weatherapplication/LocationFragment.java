@@ -16,6 +16,7 @@ import org.androidannotations.annotations.AfterInject;
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.SystemService;
 import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 
 import java.util.concurrent.Callable;
 
@@ -151,5 +152,11 @@ public class LocationFragment extends Fragment {
                 }));
             }
         });
+    }
+
+    @Subscribe(sticky = true)
+    public void onMetricChange(MetricChangeEvent metricChangeEvent) {
+        eventBus.removeStickyEvent(metricChangeEvent);
+        initLocation();
     }
 }

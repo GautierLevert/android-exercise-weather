@@ -10,4 +10,10 @@
     <string name="speed">vitesse</string>
     <string name="information">Informations</string>
     <string name="last_update">date</string>
+    <string name="title_activity_settings">Paramètres</string>
+    <string name="unit_system">Unités</string>
+    <string-array name="measurement">
+        <item>Métriques</item>
+        <item>Impériales</item>
+    </string-array>
 </resources>
